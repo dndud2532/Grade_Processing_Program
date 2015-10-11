@@ -60,6 +60,27 @@ static List<Student> studentList = new ArrayList<Student>();
 		}
 
 	}
+	
+	private static void readData() {
+		FileInputStream fis = null;
+		ObjectInputStream ois = null;
+		try {
+			fis = new FileInputStream(fileName);
+			ois = new ObjectInputStream(fis);
+			studentList = (ArrayList<Student>)ois.readObject();
+			System.out.println("데이터를 로드했습니다.");
+		} catch (FileNotFoundException e) {
+			System.out.println("파일이 존재하지 않습니다.");
+		} catch (IOException e) {
+			System.out.println(e.getMessage());
+		} catch (ClassNotFoundException e) {
+			System.out.println(e.getMessage());
+		} finally {
+			if(ois != null) 
+				try {ois.close();}catch(Exception e) {}
+		}		
+	}
+
 
 
 }
