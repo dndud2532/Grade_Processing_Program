@@ -81,6 +81,16 @@ static List<Student> studentList = new ArrayList<Student>();
 		}		
 	}
 
+	private static void deleteData() {
+
+		System.out.print(studentList.get(index).name + "학생의 정보를 삭제하겠습니까?(Y/N) : ");
+		if(scan.next().charAt(0) =='Y') {
+			studentList.remove(index);
+			index = -1;
+		}else {
+			System.out.println("삭제를 취소합니다.");
+		}
+	}
 
 
 }
